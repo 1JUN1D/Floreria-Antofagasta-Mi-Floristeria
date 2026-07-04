@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PTG82JGYB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4PTG82JGYB');
+</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Catálogo de Florería Mi Floristeria en Antofagasta - 34 productos: bouquets de rosas, girasoles, tulipanes, cajas florales y ramos con chocolates. Entrega a domicilio.">
+    <meta name="keywords" content="catálogo flores Antofagasta, bouquets, rosas, girasoles, tulipanes, cajas florales, Florería Mi Floristeria">
+    <title>Catálogo de Productos - Florería Mi Floristeria | Flores y Ramos Fúnebres en Antofagasta</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Catálogo de Productos - Florería Mi Floristeria Antofagasta">
+    <meta property="og:description" content="Bouquets, arreglos florales, coronas fúnebres y arreglos para velorios con entrega a domicilio en Antofagasta">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://antofagastafloreria.dondeseria.com/catalogo">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/catalog.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo.webp">
+</head>
+<body>
+    <!-- Navbar -->
+    <div id="navbar-container"></div>
+
+    <!-- Hero Section -->
+    <section class="catalog-hero">
+        <div class="container">
+            <h1>Nuestro Catálogo</h1>
+            <p>Florería Mi Floristeria · Ramos, arreglos florales y coronas fúnebres con entrega a domicilio en toda Antofagasta</p>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="catalog-filters">
+        <div class="container">
+            <div class="catalog-search">
+                <input type="search" id="product-search" placeholder="Buscar por nombre o código (ej. rosas o 014)" aria-label="Buscar producto por nombre o código">
+            </div>
+            <div class="filters-container">
+                <span class="filter-label">Filtrar por:</span>
+                <button class="filter-btn active" data-filter="todos">Todos los Productos</button>
+                <button class="filter-btn" data-filter="girasoles">Girasoles</button>
+                <button class="filter-btn" data-filter="rosas-rojas">Rosas Rojas</button>
+                <button class="filter-btn" data-filter="rosas-rosadas">Rosas Rosadas</button>
+                <button class="filter-btn" data-filter="chocolates">Flores y Chocolates</button>
+                <button class="filter-btn" data-filter="cajas">Cajas y Cofres</button>
+                <button class="filter-btn" data-filter="mix">Ramos Mix</button>
+                <button class="filter-btn" data-filter="precio-bajo">Menos de $100.000</button>
+                <button class="filter-btn" data-filter="precio-medio">$100.000 - $200.000</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Counter -->
+    <div class="results-counter">
+        <div class="container">
+            Mostrando <strong id="results-count">34</strong> productos
+        </div>
+    </div>
+
+    <!-- Products Grid -->
+    <section class="catalog-section">
+        <div class="container">
+            <div class="products-grid" id="products-grid">
+                <!-- Los productos se generarán aquí -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="empty-state">
+                <h3>No se encontraron productos</h3>
+                <p>Intenta con otro filtro para encontrar más opciones disponibles</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightbox-close">×</button>
+            <img src="" alt="" class="lightbox-image" id="lightbox-image">
+            <div class="lightbox-info">
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-price"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scroll-top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <!-- WhatsApp Button -->
+    <div id="whatsapp-button-container"></div>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+    <script>
+        // Datos de productos completos - Florería Mi Floristeria Antofagasta
+const products = [
+    {
+        id: 1,
+        name: "Girasoles y Lirios en Caja",
+        price: 41250,
+        image: "assets/foto1.webp",
+        description: "Caja de madera con girasoles radiantes y lirios rosados sobre follaje fresco. Un detalle luminoso que alegra cualquier ocasión especial.",
+        categories: ["girasoles", "mix", "precio-bajo"]
+    },
+    {
+        id: 2,
+        name: "Rosas con Globo y Peluche",
+        price: 40000,
+        image: "assets/foto2.webp",
+        description: "Rosas rojas acompañadas de un globo de corazón y un tierno oso de peluche. El regalo perfecto para declarar tu amor.",
+        categories: ["rosas-rojas", "precio-bajo"]
+    },
+    {
+        id: 3,
+        name: "Jardín Rosado de Lujo",
+        price: 123750,
+        image: "assets/foto3.webp",
+        description: "Abundante arreglo de rosas rosadas, claveles fucsia y mini rosas en tonos suaves. Una explosión romántica llena de delicadeza.",
+        categories: ["rosas-rosadas", "mix", "precio-medio"]
+    },
+    {
+        id: 4,
+        name: "Rosas Rojas y Lirio",
+        price: 87500,
+        image: "assets/foto4.webp",
+        description: "Ramo de rosas rojas coronado por un lirio rosado en envoltura negra elegante. Pasión y distinción en una sola pieza.",
+        categories: ["rosas-rojas", "precio-bajo"]
+    },
+    {
+        id: 5,
+        name: "Ramo de Rosas Rosadas",
+        price: 50000,
+        image: "assets/foto5.webp",
+        description: "Delicado ramo de rosas rosadas con follaje verde, ideal para llevar en mano. Un gesto sencillo y encantador para sorprender.",
+        categories: ["rosas-rosadas", "precio-bajo"]
+    },
+    {
+        id: 6,
+        name: "Corazón de Rosas y Ferrero",
+        price: 50000,
+        image: "assets/foto6.webp",
+        description: "Caja en forma de corazón con rosas rojas y chocolates Ferrero Rocher al centro. Romance y dulzura en un regalo inolvidable.",
+        categories: ["cajas", "rosas-rojas", "chocolates", "precio-bajo"]
+    },
+    {
+        id: 7,
+        name: "Canasta de Rosas Rojas",
+        price: 46250,
+        image: "assets/foto7.webp",
+        description: "Canasta de mimbre con rosas rojas y gypsophila, rematada con un lazo. Un clásico cálido para expresar todo tu cariño.",
+        categories: ["rosas-rojas", "precio-bajo"]
+    },
+    {
+        id: 8,
+        name: "Caja de Rosas y Champaña",
+        price: 100000,
+        image: "assets/foto8.webp",
+        description: "Rosas rojas junto a una botella de champaña, copas y chocolates Ferrero. La celebración perfecta para un momento especial.",
+        categories: ["cajas", "rosas-rojas", "chocolates", "precio-medio"]
+    },
+    {
+        id: 9,
+        name: "Rosas Rojas y Gypsophila",
+        price: 60000,
+        image: "assets/foto9.webp",
+        description: "Ramo alto de rosas rojas con una nube de gypsophila en presentación clásica. Elegancia romántica para conquistar a primera vista.",
+        categories: ["rosas-rojas", "precio-bajo"]
+    },
+    {
+        id: 10,
+        name: "Ramo Rosado Primaveral",
+        price: 102500,
+        image: "assets/foto10.webp",
+        description: "Ramo redondo de rosas rosadas y gypsophila en envoltura blanca. Ternura y frescura para regalar en cualquier fecha.",
+        categories: ["rosas-rosadas", "precio-medio"]
+    },
+    {
+        id: 11,
+        name: "Caja de Rosas y Vino",
+        price: 108750,
+        image: "assets/foto11.webp",
+        description: "Caja negra con rosas rojas, botella de vino, copas y chocolates Ferrero. Un regalo sofisticado para brindar por el amor.",
+        categories: ["cajas", "rosas-rojas", "chocolates", "precio-medio"]
+    },
+    {
+        id: 12,
+        name: "Rosas Rojas y Blancas",
+        price: 37500,
+        image: "assets/foto12.webp",
+        description: "Ramo de rosas rojas y blancas en envoltura kraft natural. Un contraste elegante que transmite pureza y pasión.",
+        categories: ["rosas-rojas", "mix", "precio-bajo"]
+    },
+    {
+        id: 13,
+        name: "Cofre Dorado de Rosas",
+        price: 86250,
+        image: "assets/foto13.webp",
+        description: "Caja dorada con rosas rojas, chocolates Ferrero y gypsophila, con lazo rojo. Un obsequio de lujo para ocasiones memorables.",
+        categories: ["cajas", "rosas-rojas", "chocolates", "precio-bajo"]
+    },
+    {
+        id: 14,
+        name: "Gerberas Amarillas en Jarrón",
+        price: 56250,
+        image: "assets/foto14.webp",
+        description: "Alegre jarrón de vidrio con gerberas amarillas y follaje fresco. Luz y buena energía para iluminar cualquier espacio.",
+        categories: ["mix", "precio-bajo"]
+    },
+    {
+        id: 15,
+        name: "Canasta Es una Niña",
+        price: 51250,
+        image: "assets/foto15.webp",
+        description: "Canasta de nacimiento con globo Es una Niña, girasoles, flores variadas y oso de peluche. La bienvenida perfecta para la bebé.",
+        categories: ["mix", "precio-bajo"]
+    },
+    {
+        id: 16,
+        name: "Corazón Crema y Ferrero",
+        price: 113750,
+        image: "assets/foto16.webp",
+        description: "Caja corazón con rosas crema en el borde y rosas rojas con Ferrero al centro. Un regalo tan dulce como inolvidable.",
+        categories: ["cajas", "rosas-rojas", "chocolates", "precio-medio"]
+    },
+    {
+        id: 17,
+        name: "Caja de Rosas Blancas y Rosadas",
+        price: 70000,
+        image: "assets/foto17.webp",
+        description: "Caja redonda con rosas blancas y rosadas en armonía delicada. Elegancia suave para un detalle profundamente romántico.",
+        categories: ["cajas", "rosas-rosadas", "precio-bajo"]
+    },
+    {
+        id: 18,
+        name: "Rosas Rojas en Jarrón",
+        price: 52500,
+        image: "assets/foto18.webp",
+        description: "Jarrón de vidrio con rosas rojas, gypsophila y un lazo rojo. El gesto romántico por excelencia para sorprender.",
+        categories: ["rosas-rojas", "precio-bajo"]
+    },
+    {
+        id: 19,
+        name: "Corazón Blanco y Rojo",
+        price: 123750,
+        image: "assets/foto19.webp",
+        description: "Caja corazón con rosas blancas alrededor y rosas rojas con Ferrero al centro. Un símbolo de amor lleno de contraste y dulzura.",
+        categories: ["cajas", "rosas-rojas", "chocolates", "precio-medio"]
+    },
+    {
+        id: 20,
+        name: "Torre de Rosas y Girasoles",
+        price: 40000,
+        image: "assets/foto20.webp",
+        description: "Arreglo vertical en caja negra con rosas rojas, girasoles y lirios. Una composición imponente y llena de vida.",
+        categories: ["girasoles", "rosas-rojas", "cajas", "precio-bajo"]
+    },
+    {
+        id: 21,
+        name: "Girasol y Rosa",
+        price: 18750,
+        image: "assets/foto21.webp",
+        description: "Sencillo ramo de un girasol y una rosa roja en envoltura verde oliva. Un detalle económico que transmite alegría y afecto.",
+        categories: ["girasoles", "rosas-rojas", "precio-bajo"]
+    },
+    {
+        id: 22,
+        name: "Girasoles y Rosas Rojas",
+        price: 46250,
+        image: "assets/foto22.webp",
+        description: "Ramo de girasoles y rosas rojas en envoltura blanca con bordes dorados. Fuerza y pasión en una mezcla vibrante.",
+        categories: ["girasoles", "rosas-rojas", "precio-bajo"]
+    },
+    {
+        id: 23,
+        name: "Ramo de Rosas Rosadas Suave",
+        price: 37500,
+        image: "assets/foto23.webp",
+        description: "Ramo de rosas rosadas en envoltura rosa con un lazo delicado. Romanticismo puro para regalar directamente desde el corazón.",
+        categories: ["rosas-rosadas", "precio-bajo"]
+    },
+    {
+        id: 24,
+        name: "Ramo de Girasoles",
+        price: 43750,
+        image: "assets/foto24.webp",
+        description: "Generoso ramo de girasoles en envoltura negra elegante. Energía y luz para alegrar el día de quien más quieres.",
+        categories: ["girasoles", "precio-bajo"]
+    },
+    {
+        id: 25,
+        name: "Arreglo Rosado Campestre",
+        price: 78750,
+        image: "assets/foto25.webp",
+        description: "Base con gerberas rosadas, claveles y rosas durazno en tonos suaves. Frescura y color para decorar con mucho estilo.",
+        categories: ["mix", "rosas-rosadas", "precio-bajo"]
+    },
+    {
+        id: 26,
+        name: "Corazón Rojo y Crema",
+        price: 48750,
+        image: "assets/foto26.webp",
+        description: "Caja corazón con rosas rojas al centro y rosas crema alrededor, con lazo rojo. Un regalo romántico de presentación impecable.",
+        categories: ["cajas", "rosas-rojas", "precio-bajo"]
+    },
+    {
+        id: 27,
+        name: "Ramo de Rosas Crema",
+        price: 42500,
+        image: "assets/foto27.webp",
+        description: "Ramo de rosas amarillas y crema en envoltura blanca con detalles dorados. Suavidad y elegancia para un gesto muy especial.",
+        categories: ["mix", "precio-bajo"]
+    },
+    {
+        id: 28,
+        name: "Escalera de Rosas Rosadas",
+        price: 75000,
+        image: "assets/foto28.webp",
+        description: "Arreglo escalonado de rosas rosadas con margaritas blancas y lazo de rafia. Una pieza encantadora llena de dulzura.",
+        categories: ["rosas-rosadas", "mix", "precio-bajo"]
+    },
+    {
+        id: 29,
+        name: "Tributo de Rosas Blancas",
+        price: 58750,
+        image: "assets/foto29.webp",
+        description: "Arreglo fúnebre bajo de rosas blancas con abundante follaje verde. Un homenaje sereno para acompañar en momentos difíciles.",
+        categories: ["mix", "precio-bajo"]
+    },
+    {
+        id: 30,
+        name: "Corona Fúnebre Rosada",
+        price: 87500,
+        image: "assets/foto30.webp",
+        description: "Corona fúnebre elaborada con claveles rosados y fucsia. Un tributo delicado para honrar con respeto y afecto.",
+        categories: ["mix", "precio-bajo"]
+    },
+    {
+        id: 31,
+        name: "Corona Fúnebre Lila",
+        price: 87500,
+        image: "assets/foto31.webp",
+        description: "Corona fúnebre con rosas moradas y blancas sobre una base de follaje. Una despedida elegante y llena de recogimiento.",
+        categories: ["mix", "precio-bajo"]
+    },
+    {
+        id: 32,
+        name: "Corona Fúnebre Coral",
+        price: 100000,
+        image: "assets/foto32.webp",
+        description: "Corona fúnebre con rosas coral, blancas y gladiolos. Un homenaje luminoso para expresar condolencias con dignidad.",
+        categories: ["mix", "precio-medio"]
+    },
+    {
+        id: 33,
+        name: "Arreglo Fúnebre Blanco",
+        price: 37500,
+        image: "assets/foto33.webp",
+        description: "Arreglo de rosas blancas con follaje en una base clásica. Símbolo de paz y respeto para acompañar una despedida.",
+        categories: ["mix", "precio-bajo"]
+    },
+    {
+        id: 34,
+        name: "Homenaje de Rosas Blancas",
+        price: 31250,
+        image: "assets/foto34.webp",
+        description: "Arreglo vertical de rosas blancas y crisantemos sobre base natural. Un tributo puro y sereno para honrar la memoria.",
+        categories: ["mix", "precio-bajo"]
+    }
+];
+
+
+        // Estado de filtro y búsqueda
+        let currentFilter = 'todos';
+        let searchTerm = '';
+
+        // Código de referencia: 001, 002, 003...
+        function productCode(p) {
+            return String(p.id).padStart(3, '0');
+        }
+
+        // URL absoluta de la foto del producto
+        function productPhotoUrl(p) {
+            return 'http://antofagastafloreria.dondeseria.com/' + p.image.replace(/^\//, '');
+        }
+
+        // Normaliza texto para búsqueda sin tildes (u0300-u036f = acentos combinantes)
+        function normalizeText(t) {
+            return t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+        }
+
+        // Renderizar productos
+        function renderProducts() {
+            const filter = currentFilter;
+            const grid = document.getElementById('products-grid');
+            const emptyState = document.getElementById('empty-state');
+            const resultsCount = document.getElementById('results-count');
+
+            let filteredProducts = products;
+
+            if (filter !== 'todos') {
+                filteredProducts = products.filter(product =>
+                    product.categories.includes(filter)
+                );
+            }
+
+            // Búsqueda por nombre o código
+            if (searchTerm.trim()) {
+                const q = normalizeText(searchTerm.trim());
+                filteredProducts = filteredProducts.filter(product =>
+                    normalizeText(product.name).includes(q) ||
+                    productCode(product).includes(q)
+                );
+            }
+
+            if (filteredProducts.length === 0) {
+                grid.style.display = 'none';
+                emptyState.classList.add('active');
+                resultsCount.textContent = '0';
+                return;
+            }
+
+            grid.style.display = 'grid';
+            emptyState.classList.remove('active');
+            resultsCount.textContent = filteredProducts.length;
+
+            grid.innerHTML = filteredProducts.map(product => `
+                <div class="product-card" data-categories="${product.categories.join(' ')}">
+                    <div class="product-image-container" onclick="openLightbox('${product.image}', '${product.name}', '${formatPrice(product.price)}')">
+                        <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
+                        <div class="zoom-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.35-4.35"/>
+                                <line x1="11" y1="8" x2="11" y2="14"/>
+                                <line x1="8" y1="11" x2="14" y2="11"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        ${product.oldPrice ? `<div class="product-offer-badge">OFERTA</div>` : ''}
+                        <div class="product-ref">Ref. ${productCode(product)}</div>
+                        <h3 class="product-name">${product.name}</h3>
+                        <div class="product-description">${product.description}</div>
+                        <div class="product-footer">
+                            <div>
+                                <span class="price-label ${product.oldPrice ? 'price-label-old' : ''}">${product.oldPrice ? formatPrice(product.oldPrice) : 'Desde'}</span>
+                                <div class="product-price">${formatPrice(product.price)}</div>
+                            </div>
+                            <a href="https://wa.me/56922437256?text=${encodeURIComponent('Hola, me interesa el producto: ' + product.name + ' (Ref. ' + productCode(product) + ') - ' + formatPrice(product.price) + ' | Foto: ' + productPhotoUrl(product))}"
+                               class="btn-order"
+                               target="_blank">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                                </svg>
+                                Pedir Ahora
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Formatear precio
+        function formatPrice(price) {
+            return '$' + price.toLocaleString('es-CL');
+        }
+
+        // Filtros
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.dataset.filter;
+                renderProducts();
+                window.scrollTo({ top: 400, behavior: 'smooth' });
+            });
+        });
+
+        // Buscador por nombre o código
+        document.getElementById('product-search').addEventListener('input', function() {
+            searchTerm = this.value;
+            renderProducts();
+        });
+
+        // Lightbox
+        function openLightbox(image, name, price) {
+            document.getElementById('lightbox-image').src = image;
+            document.getElementById('lightbox-image').alt = name;
+            document.getElementById('lightbox-title').textContent = name;
+            document.getElementById('lightbox-price').textContent = price;
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // Botón volver arriba
+        const scrollTopBtn = document.getElementById('scroll-top');
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 600) scrollTopBtn.classList.add('visible');
+            else scrollTopBtn.classList.remove('visible');
+        });
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Render inicial
+        renderProducts();
+    </script>
+</body>
+</html>

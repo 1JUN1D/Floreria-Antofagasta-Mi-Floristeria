@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: http://antofagastafloreria.dondeseria.com/sitemap.xml
